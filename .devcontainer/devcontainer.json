@@ -1,0 +1,49 @@
+{
+	"name": "Shortsmaker Worker - Python",
+	"dockerComposeFile": [
+		"docker-compose.yml"
+	],
+	"service": "devcontainer",
+	"workspaceFolder": "/workspaces/shortsmaker/shortsmaker-worker",
+	"postStartCommand": "bash .devcontainer/onstart.sh",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			"version": "latest",
+			"enableNonRootDocker": "true",
+			"moby": "false"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.black-formatter",
+				"ms-azuretools.vscode-docker",
+				"EditorConfig.EditorConfig",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"JuniorSchmidt.lunar-vscode-theme",
+				"fathulfahmy.lunarkeymap",
+				"vscodevim.vim",
+				"VSpaceCode.whichkey",
+				"redhat.vscode-xml"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash"
+					},
+					"zsh": {
+						"path": "/bin/zsh"
+					}
+				},
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
+				"python.testing.pytestEnabled": true,
+				"python.testing.pytestArgs": [
+					"app"
+				]
+			}
+		}
+	}
+}

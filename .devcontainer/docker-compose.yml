@@ -1,0 +1,21 @@
+services:
+  devcontainer:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ../..:/workspaces/shortsmaker:cached
+      - ${HOME}/.ssh:/home/vscode/.ssh:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    privileged: true
+    command: sleep infinity
+    environment:
+      - LOG_LEVEL=DEBUG
+      - TZ=America/Sao_Paulo
+      # Adicione outras variáveis de ambiente se necessário
+    networks:
+      - app_shortsmaker-network
+
+networks:
+  app_shortsmaker-network:
+    external: true
